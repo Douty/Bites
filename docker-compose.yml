@@ -1,0 +1,21 @@
+
+services:
+  firebase-emulator:
+    build: ./firebase-emulator
+    ports:
+      - 4000:4000
+      - 9099:9099
+    environment:
+      - FIREBASE_SERVICE_ACCOUNT_KEY=${FIREBASE_SERVICE_ACCOUNT_KEY}
+      - FIREBASE_TOKEN=${FIREBASE_TOKEN}
+      - FIREBASE_AUTH_EMULATOR_HOST=${FIREBASE_AUTH_EMULATOR_HOST}
+    
+
+  authservice:
+    build: ./AuthService
+    ports:
+      - 8000:8000
+    environment:
+      - FIREBASE_WEB_API_KEY=${FIREBASE_WEB_API_KEY}
+      - FIREBASE_AUTH_EMULATOR_HOST=${FIREBASE_AUTH_EMULATOR_HOST}
+      - FIREBASE_SERVICE_ACCOUNT_KEY=${FIREBASE_SERVICE_ACCOUNT_KEY}
