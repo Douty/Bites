@@ -29,16 +29,7 @@ jobs:
           FIREBASE_AUTH_EMULATOR_HOST: ${{ secrets.FIREBASE_AUTH_EMULATOR_HOST }}
           FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
 
-      - name: Wait for Services
-        run: |
-          until curl -s http://${{ secrets.FIREBASE_AUTH_EMULATOR_HOST }}/; do
-            echo "Waiting for Firebase Emulator..."
-            sleep 5
-          done
-          until curl -s http://localhost:8000/health-check; do
-            echo "Waiting for AuthService..."
-            sleep 5
-          done
+      
 
       - name: Run Unit and Integration Tests
         env:
