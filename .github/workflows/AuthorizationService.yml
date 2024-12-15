@@ -41,13 +41,13 @@ jobs:
           done
 
       - name: Run Unit and Integration Tests
-        run: |
-          docker-compose exec authservice pytest tests --log-level=DEBUG --verbose || (docker-compose logs authservice && exit 1)
         env:
           FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
           FIREBASE_AUTH_EMULATOR_HOST: ${{ secrets.FIREBASE_AUTH_EMULATOR_HOST }}
           FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          docker-compose exec authservice pytest tests --log-level=DEBUG --verbose || (docker-compose logs authservice && exit 1)
 
       - name: Fetch Logs on Failure
         if: failure()
