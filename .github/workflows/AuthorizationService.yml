@@ -35,7 +35,7 @@ jobs:
             echo "Waiting for Firebase Emulator..."
             sleep 5
           done
-          until curl -s http://localhost:<authservice-port>/health-check; do
+          until curl -s http://localhost:8000/health-check; do
             echo "Waiting for AuthService..."
             sleep 5
           done
