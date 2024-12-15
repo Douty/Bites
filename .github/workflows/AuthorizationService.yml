@@ -49,9 +49,6 @@ jobs:
         run: |
           docker-compose exec authservice pytest tests --log-level=DEBUG --verbose || (docker-compose logs authservice && exit 1)
 
-      - name: Fetch Logs on Failure
-        if: failure()
-        run: docker-compose logs authservice
 
       - name: Log In to GitHub Container Registry
         uses: docker/login-action@v3
