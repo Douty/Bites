@@ -23,14 +23,14 @@ jobs:
           docker-compose version
 
       - name: Build and Start Firebase Emulator
-        run: docker-compose firebase-emulator up -d 
+        run: docker-compose  up firebase-emulator -d 
         env:
           FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           FIREBASE_AUTH_EMULATOR_HOST: ${{ secrets.FIREBASE_AUTH_EMULATOR_HOST }}
 
       - name: Build and Start Authentication Service
-        run: docker-compose authservice up -d 
+        run: docker-compose  up authservice -d 
         env:
           FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
           FIREBASE_AUTH_EMULATOR_HOST: ${{ secrets.FIREBASE_AUTH_EMULATOR_HOST }}
