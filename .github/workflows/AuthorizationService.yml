@@ -35,9 +35,9 @@ jobs:
           FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
           FIREBASE_AUTH_EMULATOR_HOST: ${{ secrets.FIREBASE_AUTH_EMULATOR_HOST }}
           FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
-
+            
       - name: Run Unit and Integration Tests on Authentication Service
-        run: docker-compose exec authservice pytest
+        run: docker-compose exec authservice pytest -s
         env:
           FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
           FIREBASE_AUTH_EMULATOR_HOST: ${{ secrets.FIREBASE_AUTH_EMULATOR_HOST }}
